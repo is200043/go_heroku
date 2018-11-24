@@ -18,11 +18,10 @@ func main() {
 	//env
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
-	//MONGO_HOST
 	mongoHost := viper.GetString("mongo.host")
 	mongoUser := viper.GetString("mongo.user")
 	mongoPass := viper.GetString("mongo.pass")
-	port := ":" + viper.GetString("mongo.post")
+	port := ":" + viper.GetString("port")
 
 	connString := fmt.Sprintf("%v:%v@%v", mongoUser, mongoPass, mongoHost)
 	session, err := mgo.Dial(connString)
